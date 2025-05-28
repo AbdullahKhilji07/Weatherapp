@@ -17,32 +17,12 @@ function Home() {
     windspeed: 2,
   });
 
-  const handleClick = () => {
-    if (city !== '') {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={Your_API_KEY}&units=metric`;
-      axios
-        .get(apiUrl)
-        .then((res) => {
-          setData({
-            celcius: res.data.main.temp,
-            name: res.data.name,
-            humidity: res.data.main.humidity,
-            windspeed: res.data.wind.speed,
-          });
-          setError('');
-        })
-        .catch((err) => {
-          if (err.response && err.response.status === 404) {
-            setError('Invalid City Name🤐');
-          }
-          console.log(err);
-        });
-    }
-  };
+  // ✅ API Key and base URL
+  const API_KEY = '56794b897ddc9b8a1416f80de9eeddcf';
 
+  // ✅ Fetch Lahore weather on first load
   useEffect(() => {
-    const apiUrl =
-      'https://api.openweathermap.org/data/2.5/weather?q=Lahore&appid={Your_API_KEY}&units=metric';
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=56794b897ddc9b8a1416f80de9eeddcf&units=metric`;
     axios
       .get(apiUrl)
       .then((res) => {
@@ -54,9 +34,36 @@ function Home() {
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log('Initial fetch error:', err);
       });
   }, []);
+
+  // ✅ Handle button click
+const handleClick = () => {
+  if (city !== '') {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=56794b897ddc9b8a1416f80de9eeddcf&units=metric`;
+    axios
+      .get(apiUrl)
+      .then((res) => {
+        setData({
+          celcius: res.data.main.temp,
+          name: res.data.name,
+          humidity: res.data.main.humidity,
+          windspeed: res.data.wind.speed,
+        });
+        setError('');
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 404) {
+          setError('Invalid City Name 🤐');
+        } else {
+          setError('Error fetching weather data.');
+        }
+        console.log(err);
+      });
+  }
+};
+
 
   return (
     <div className="container">
