@@ -10,16 +10,6 @@
   padding-top: 50px; /* optional, can remove if vertical centering looks off */
 }
 
-.weather {
-  background: linear-gradient(130deg, rgb(86, 86, 235), rgb(5, 5, 199));
-  padding: 30px;
-  text-align: center;
-  color: white;
-  border-radius: 10px;
-  width: 300px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
 .search {
   display: flex;
   align-items: center;
@@ -51,6 +41,18 @@
   width: 35px;
   height: 30px;
 }
+
+.weather {
+  background: linear-gradient(130deg, rgb(86, 86, 235), rgb(5, 5, 199));
+  padding: 30px;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+
 
 .winfo .icon{
   margin-top: 20px;
