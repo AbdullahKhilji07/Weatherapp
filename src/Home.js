@@ -3,8 +3,10 @@ import './App.css';
 import axios from 'axios';
 import searchLens from './images/searchlens.png';
 import cloudIcon from './images/cloud2.png';
-import humidityIcon from './images/humidity1.png';
-import windIcon from './images/wind.png';
+import humidityIcon from './images/humidity.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWind } from '@fortawesome/free-solid-svg-icons';
+
 
 function Home() {
   const [city, setCity] = useState('');
@@ -96,7 +98,7 @@ const handleClick = () => {
             </div>
 
             <div className="col">
-              <img src={windIcon} width="50px" height="50px" alt="wind" />
+              <FontAwesomeIcon icon={faWind} size="2x" />
               <div className="wind">
                 <p>{Math.round(data.windspeed)} km/h</p>
                 <p>Wind</p>
